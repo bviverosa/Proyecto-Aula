@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="navs.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Mulish:wght@200&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Mulish:wght@200;300&display=swap" rel="stylesheet">
+<body>
+    <div class="wrapper"> 
+        <nav>
+            <ul>
+                <li><a href="#">Logo</a></li>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="./Calls.html">Gestion</a></li>
+                <li><a href="./form.html">Contacto</a></li>
+                <li><a href="#">Ayuda</a></li>
+                
+            </ul>
+        </nav>
+       
+        <div class="buttons">
+            <button  class="gray_button" id="add_ambulance">
+                Agregar +
+            </button>
+            <button class="gray_button" id="history_button">Historial</button>
+        </div>
+        <div class="form_container">
+            <div class ="form">
+             <label>Encuentre la ambulancia que busca</label>
+            <input type="text" placeholder="Buscar">
+            <label> O seleccione un filtro</label>
+            <select class="selects">
+                <option>Placa</option>
+                <option>Institucion</option>
+                
+            </select>
+            <button id="buscar" class="blue_buttons" >Buscar</button>
+            </div>
+            
+        </div>
+        
+     <!-- Cierre del contenedor principal -->
+
+    <footer>
+        <ul>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Usuario</a></li>
+            <li><a href="#">Ayuda</a></li>
+            
+        </ul>
+    </footer>
+    </div>
+    <div  class="add-ambulance_enable">
+        <div class=" sub_add-ambulance">
+            <label> Placa de la ambulancia</label>
+            <input type="text" placeholder="Placa de  la ambulancia" required >
+             <label> Institucion a la que pertenece</label> 
+             <input type="text" placeholder="Institucion" required >
+             <label> Tipo de servicio autorizado</label>
+             <input type="text" placeholder="Tipo de servicio" required >
+             <button class="blue_buttons">Agregar</button>
+         </div>
+        
+         
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="navs.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Mulish:wght@200&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Mulish:wght@200;300&display=swap" rel="stylesheet">
+<body>
+    <div class="wrapper"> 
+        <nav>
+            <ul>
+                <li><a href="#">Logo</a></li>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Gestion</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Ayuda</a></li>
+                
+            </ul>
+        </nav>
+       
+        <div class="request_container">
+            <div class ="form">
+                <div class="personal-data">
+                    <div class="user-data">
+             <label><b>Datos del usuario</b></label>
+             <label>Nombre del usuario</label>
+             
+            <input type="text" id="userName-input" placeholder="Nombre">
+            <label>Apellido Paterno</label>
+             <input type="text" id="userLastName1-input" placeholder="Apellido Paterno">
+             <label>Apellido Materno</label>
+             <input type="text" id="userlastName2-input" placeholder="Apellido Materno">
+                </div>
+                    <div class="pacient-data">
+             <label>Datos del Herido</label>
+             <label>Nombre del Herido</label>
+             
+            <input type="text" id="pacientName-input" placeholder="Nombre">
+            <label>Apellido Paterno</label>
+             <input type="text" id="pacientLastName1-input" placeholder="Apellido Paterno">
+             <label>Apellido Materno</label>
+             <input type="text" id="pacientLastName1-input" placeholder="Apellido Materno">
+             
+                </div>
+                </div>
+                <div class="emergency-data">
+                    <div class="description-container">
+            <label>Datos de la emergencia</label>
+            <label>Describa la emergencia</label>
+            <textarea placeholder="Escriba aqui" id="description-input"></textarea>
+                    </div>
+                    <div class="coords-container">
+                        
+                        <div><label>Coordenadas</label></div>
+            <div class="input-coords">
+            <input type="number" placeholder="latitud">
+             <input type="number" placeholder="longitud">
+            </div>
+                    </div>
+                    <div class="date-container">
+                        <div>
+             <label>Fecha de creación</label>
+               <input type="date">
+                        </div>
+                        <div>
+             <label>Fecha de cierre</label>
+               <input type="date">
+                        </div>
+                    </div>
+               <label>Codigo de cierre</label>
+               <select class="selects">
+                <option>A (Afirmativo)</option>
+                <option>N (Negativo)</option>
+                <option>F (Falso)</option>
+                
+            </select>
+               <label> Datos de la ambulancia</label>
+               <select class="selects">
+                   <option>1</option>
+                <option>2</option>
+                <option>3</option>
+           
+                
+            </select>
+                   <label>Placa </label>
+                   <input type="text" placeholder="Placa de la ambulancia">
+               </div>
+            </div>
+            
+        </div>
+      
+
+            
+        
+     <!-- Cierre del contenedor principal -->
+
+    <!--<footer>
+        <ul>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Usuario</a></li>
+            <li><a href="#">Ayuda</a></li>
+            
+        </ul>
+    </footer>
+    </div>-->
+   
+        
+         
+        
+   
+</body>
+</html>
