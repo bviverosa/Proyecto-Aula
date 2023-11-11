@@ -17,8 +17,8 @@
             <ul>
                 <li><a href="#">Logo</a></li>
                 <li><a href="#">Inicio</a></li>
-                <li><a href="#">Gestion</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="./Calls.html">Gestion</a></li>
+                <li><a href="./form.html">Contacto</a></li>
                 <li><a href="#">Ayuda</a></li>
                 
             </ul>
@@ -38,7 +38,7 @@
              <input type="text" id="userlastName2-input" placeholder="Apellido Materno">
                 </div>
                     <div class="pacient-data">
-             <label>Datos del Herido</label>
+                        <label><b>Datos del Herido</b></label>
              <label>Nombre del Herido</label>
              
             <input type="text" id="pacientName-input" placeholder="Nombre">
@@ -51,17 +51,20 @@
                 </div>
                 <div class="emergency-data">
                     <div class="description-container">
-            <label>Datos de la emergencia</label>
-            <label>Describa la emergencia</label>
-            <textarea placeholder="Escriba aqui" id="description-input"></textarea>
+                        <label><b>Datos de la emergencia</b></label>
+                        <label>Describa la emergencia</label>
+                        <textarea placeholder="Escriba aqui" id="description-input"></textarea>
                     </div>
+                <div class="more-data">
+                    <div class=more-data_subcontainer>
                     <div class="coords-container">
-                        
-                        <div><label>Coordenadas</label></div>
-            <div class="input-coords">
-            <input type="number" placeholder="latitud">
-             <input type="number" placeholder="longitud">
-            </div>
+                        <div>
+                            <label>Coordenadas</label>
+                        </div>
+                        <div class="input-coords">
+                            <input type="number" placeholder="latitud">
+                            <input type="number" placeholder="longitud">
+                        </div>
                     </div>
                     <div class="date-container">
                         <div>
@@ -73,23 +76,40 @@
                <input type="date">
                         </div>
                     </div>
-               <label>Codigo de cierre</label>
-               <select class="selects">
-                <option>A (Afirmativo)</option>
-                <option>N (Negativo)</option>
-                <option>F (Falso)</option>
-                
-            </select>
-               <label> Datos de la ambulancia</label>
-               <select class="selects">
+            <div class="close-code">
+                <label>Codigo de cierre</label>
+                <select class="selections">
+                 <option>A (Afirmativo)</option>
+                 <option>N (Negativo)</option>
+                 <option>F (Falso)</option>
+
+
+                </select>
+            </div>
+                    
+                    <div class="Ambulance-data">
+                        <div class="Ambulance-data_subcontainer">
+                            <label><b> Datos de la ambulancia</b></label>
+               <select class="selections">
                    <option>1</option>
                 <option>2</option>
                 <option>3</option>
            
                 
             </select>
+                        </div>
+                        <div class="Ambulance-data_subcontainer">
                    <label>Placa </label>
                    <input type="text" placeholder="Placa de la ambulancia">
+                   </div>
+                    </div>
+                       
+                    </div>
+                     <div class="more-data_subcontainer">
+                            <div class="img-container">
+                                <img src="https://th.bing.com/th/id/R.ee626e5ae85d14f321840445b0cb473d?rik=mK4pyA9oCTh0CA&pid=ImgRaw&r=0" alt="alt"/>
+                            </div>
+                        </div>
                </div>
             </div>
             
