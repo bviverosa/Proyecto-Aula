@@ -1,0 +1,30 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 11 nov 2023, 17:44:54
+    Author     : bryda
+*/
+
+.text-container{
+    display:flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-content:center; 
+    height:144px;
+    width:800px;
+    margin:auto;
+    margin-top:5%;
+    justify-content: space-between;
+}
+.Titles{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+}
+p{
+     font-family: 'Mulish', sans-serif;
+     text-align: center;
+     
+}

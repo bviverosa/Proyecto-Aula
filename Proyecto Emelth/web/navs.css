@@ -104,6 +104,8 @@ footer {
     margin: auto; /* Esto centrará el form_container horizontalmente */
     margin-top: 50px; /* Ajusta la distancia desde la parte superior según sea necesario */
     border-radius: 10px;
+    box-sizing: border-box;
+    padding:4%;
     
     
 }
@@ -120,6 +122,7 @@ footer {
 label{
     
     font-family: 'Mulish', sans-serif;
+    
 }
 input{
     font-family: 'Mulish', sans-serif;

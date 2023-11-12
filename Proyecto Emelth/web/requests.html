@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="navs.css">
+    <link rel="stylesheet" type="text/css" href="requests.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Mulish:wght@200&display=swap" rel="stylesheet">
@@ -15,7 +16,7 @@
     <div class="wrapper"> 
         <nav>
             <ul>
-                <li><a href="./requests.html">Logo</a></li>
+                <li><a href="#">Logo</a></li>
                 <li><a href="#">Inicio</a></li>
                 <li><a href="./Calls.html">Gestion</a></li>
                 <li><a href="./form.html">Contacto</a></li>
@@ -24,25 +25,21 @@
             </ul>
         </nav>
        
-        <div class="buttons">
-            <button  class="gray_button" id="add_ambulance">
-                Agregar +
-            </button>
-            <button class="gray_button" id="history_button">Historial</button>
-        </div>
-        <div class="form_container">
-            <div class ="form">
-             <label>Encuentre la ambulancia que busca</label>
-            <input type="text" placeholder="Buscar">
-            <label> O seleccione un filtro</label>
-            <select class="selects">
-                <option>Placa</option>
-                <option>Institucion</option>
-                
-            </select>
-            <button id="buscar" class="blue_buttons" >Buscar</button>
-            </div>
+        <div class="request_container">
+            <div class="text-container">
             
+                <label class="Titles"> <b>Peticiones</b></label>
+                <p class="Titles"> Acepte o rechace peticiones según sea la situación en la que se encuentren las ambulancias</p>
+        </div>
+           
+                 <div class="rows-container">
+                <div class="rows"><label>Nombre de la persona   /   Fecha de creación </label></div>
+            <div class="rows"><label>Nombre de la persona   /   Fecha de creación </label></div>
+            <div class="rows"><label>Nombre de la persona   /   Fecha de creación </label></div>
+            <div class="rows"><label>Nombre de la persona   /   Fecha de creación </label></div>
+            </div>
+                
+          
         </div>
         
     
@@ -55,17 +52,8 @@
             
         </ul>
     </footer>
-    </div>
-    <div  class="add-ambulance_enable">
-        <div class=" sub_add-ambulance">
-            <label> Placa de la ambulancia</label>
-            <input type="text" placeholder="Placa de  la ambulancia" required >
-             <label> Institucion a la que pertenece</label> 
-             <input type="text" placeholder="Institucion" required >
-             <label> Tipo de servicio autorizado</label>
-             <input type="text" placeholder="Tipo de servicio" required >
-             <button class="blue_buttons">Agregar</button>
-         </div>
+    
+  
         
          
         
