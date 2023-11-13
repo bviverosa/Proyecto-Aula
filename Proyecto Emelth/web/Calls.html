@@ -5,34 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="navs.css">
+    <link rel="stylesheet" type="text/css" href="components.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Mulish:wght@200&display=swap" rel="stylesheet">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Mulish:wght@200;300&display=swap" rel="stylesheet">
+</head>
 <body>
-    <div class="wrapper"> 
-        <nav>
-            <ul>
-                <li><a href="#">Logo</a></li>
-                <li><a href="#">Inicio</a></li>
-                <li>
-                    <label for="nav_selection">Gestion</label>
-                    <select class="nav-selects" id="nav_selection">
-                        <optgroup label="Gestión"> 
-                    
-                    <option class="nav-options" value="opcion1">Gestión de llamadas</option>
-                    <option class="nav-options" value="opcion2">Gestión de ambulancias</option>
-                        </optgroup>
-                    </select>
-                </li>
-                <li><a href="./form.html">Contacto</a></li>
-                <li><a href="#">Ayuda</a></li>
-                
-            </ul>
-        </nav>
-       
+    <div class="wrapper">
+        <div class="top-container">
+            <div class="logo-container">
+                <label>logo</label>
+            </div>
+        <div class="nav-container">
+            
+       <nav>
+           <div class="nav-left">
+               <ul>
+                   
+                   <li>
+                      <div class="nav-label">
+                       Inicio
+                       </div>
+                   </li>
+                   <li>
+                       <div class="nav-label">
+                       Gestion
+                       </div>
+                       <div class="menu-container">
+                           <ul class="nav-ul">
+                               <li class="nav-li">
+                                   Gestion de llamadas
+                               </li>
+                               <li class="nav-li">
+                                   Gestión de Ambulancias
+                               </li>
+                           </ul>
+                       </div>
+                   
+                   </li>
+                       
+                   <li><div class="nav-label">
+                       Ayuda
+                       </div>
+                   </li>
+                   <li>
+                       <div class="nav-label">Contacto</div>
+                   </li>
+                 
+                   
+               </ul>
+           </div>
+           <div class="nav-right">
+               <ul>
+                   <li>Inicio</li>
+               </ul>
+               
+           </div>
+       </nav>
+        </div>
+        </div>
         <div class="form_container">
             <div class ="form">
              <label>Encuentre el registro de llamada</label>
@@ -49,7 +83,44 @@
         </div>
         <div class="history-container">
             <div class="rows-container">
-                <div class="rows"><label>Nombre de la persona   /   Fecha de creación </label></div>
+                <div class="info-row">
+            <div class="rows"><label>Nombre de la persona   /   Fecha de creación </label></div>
+            <div class="info-container">
+                
+            <div class="sub_container-row">
+                <div>
+                    <div>
+                        <label>Nombre del paciente</label>
+                        <input type="text" placeholder>
+                    </div>
+                    <div class="date-container">
+                        <div>
+             <label>Fecha de creación</label>
+               <input type="date">
+                        </div>
+                        <div>
+             <label>Fecha de cierre</label>
+               <input type="date">
+                        </div>
+                    </div>
+                    <div class="name-container">
+                         <label>Nombre del operador</label>
+             
+            <input type="text" id="userName-input" placeholder="Nombre">
+                    </div>
+                   
+                    
+                </div>
+            </div>
+            <div class="sub_container-row">
+             <div class="description-container">
+                        <label><b>Datos de la emergencia</b></label>
+                        <label>Describa la emergencia</label>
+                        <textarea placeholder="Escriba aqui" id="description-input"></textarea>
+                    </div>
+        </div>
+                </div>
+    </div>
             <div class="rows"><label>Nombre de la persona   /   Fecha de creación </label></div>
             <div class="rows"><label>Nombre de la persona   /   Fecha de creación </label></div>
             <div class="rows"><label>Nombre de la persona   /   Fecha de creación </label></div>
@@ -69,13 +140,8 @@
         </ul>
     </footer>
     </div>
-    <div class="info-container">
-        <div class="left-container">
-        </div>
-        <div class="right-container">
-            
-        </div>
-    </div>
+    
+        
    
         
          
