@@ -27,3 +27,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     padding:20px;
     
 }
+.blue_buttons:hover{
+    background:black;
+}
