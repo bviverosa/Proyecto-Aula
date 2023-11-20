@@ -33,7 +33,7 @@ function validatePlates(value, option){
                     alert("Placas no validas");
                     return false;
                  }
-                 break;
+             break;
              case "Institución":
                  if(value>9 && value<14 ){
                      alert("Institucion valida");
@@ -42,7 +42,7 @@ function validatePlates(value, option){
                     alert("Institucion no valida");
                     return false;
                  }
-                 break;
+             break;
              case "Servicio":
                  if(value >89 && value<94){
                      alert("Servicio Valido");
@@ -52,6 +52,7 @@ function validatePlates(value, option){
                  }
                  
                 ;
+             break;
                  
          }
      }else{
@@ -71,35 +72,33 @@ function validatePlates(value, option){
         thirdValidation= validatePlates(thirdOption,"Servicio");
         if (firstValidation && secondValidation && thirdValidation){
             alert("Regitro exitoso");
+            addAmbulance(ambulancePlates.value,firstOption,thirdOption);
         }
-        addAmbulance(ambulancePlates.value,firstOption,thirdOption);
+        
      
  }
  function addAmbulance(plateNumber, institution,service) {
     // Obtén los valores del formulario que deseas enviar al servlet
-   
+   console.log(plateNumber);
+   console.log(institution);
+   console.log(service);
     // Otros campos según tu formulario
 
     // Construye los datos que se enviarán al servlet
-    let data = new FormData();
-    data.append("plateNumber", plateNumber);
-    data.append("institution", institution);
-     data.append("service", service);
-  
-    // Otros campos según tu formulario
+   // Construye la URL con los parámetros
+ let url = `/Proyecto_Emelth/Ambulances?action=add&plateNumber=${encodeURIComponent(plateNumber)}&institution=${encodeURIComponent(institution)}&service=${encodeURIComponent(service)}`;
+// Realiza la llamada Fetch con método GET
+fetch(url, {
+    method: 'GET',
+})
+.then(response => response.text())
+.then(result => {
+    alert(result);
+})
+.catch(error => {
+    console.error('Error en la solicitud:', error);
+});
 
-    // Realiza la llamada Fetch al servlet
-    fetch('/Proyecto_Emelth/Ambulances', {
-        method: 'POST',
-        body: data
-    })
-    .then(response => response.text())
-    .then(result => {
-        alert(result); // Muestra la respuesta del servlet (puede personalizar esto según tus necesidades)
-    })
-    .catch(error => {
-        console.error('Error en la solicitud:', error);
-    });
 }
 
  
