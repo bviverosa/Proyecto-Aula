@@ -1,0 +1,249 @@
+/* Cambiar el color del enlace cuando se pasa el mouse por encima */
+*{
+    font-family: 'Mulish';
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    height: 100vh;
+    font-family: 'Mulish', sans-serif;
+}
+a:hover {
+    color: #8AE0DB;
+}
+footer {
+    display:flex;
+    margin-bottom:0; /* Empuja el pie de página hacia la parte inferior */
+    justify-content: center;
+    align-content: center;
+    background-color: #ABABAB;
+}
+
+p{
+    margin:5% 0;
+    word-wrap: break-word; /* Propiedad antigua, pero ampliamente compatible */
+    overflow-wrap: break-word; /* Propiedad moderna */
+}
+span{
+    height:10%;
+}
+
+/* Estilos para el menú de navegación */
+.selects{
+    box-sizing: border-box;
+    padding:10px 16px 10px 16px;
+    background-color: #69C7C9;
+    color:#fff;
+    width:700px;
+    border:none;
+    border-radius:6px;
+    height:40px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+.wrapper {
+    display: flex;
+    position:absolute;
+    z-index: 5;
+    flex-direction: column;
+    height: 100vh;
+    width:100%
+}
+
+nav {
+    height:65px;;
+    background-color: #ABABAB;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 21px;
+}
+li {
+    font-family: 'Mulish', sans-serif;
+    width: 57px;
+    height: 20px;
+    display: inline;
+}
+a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+    padding: 10px 20px;
+}
+/* Cambiar el color del enlace cuando se pasa el mouse por encima */
+
+footer {
+    display:flex;
+    margin-bottom:0; /* Empuja el pie de página hacia la parte inferior */
+    justify-content: center;
+    align-content: center;
+    background-color: #ABABAB;
+}
+
+label{
+    font-family: 'Mulish', sans-serif;
+}
+
+hr{
+    border: 2px solid #161616;
+    margin: 2% 0;
+    width: 15%;
+}
+
+.container {
+    width:100%;
+    height:2257px;
+    background-color:#EAE9E9; /*A modificar*/
+    margin: auto; /* Esto centrará el form_container horizontalmente */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.container_subcontainer{
+    display: flex;
+    flex-direction: column;
+    min-height: 578px;
+    height: 80%;
+    width: 70%;
+    margin:5% 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+.subcontainer-1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:30%;
+    background-color: #B7B5B5;
+    margin: 0%;
+    border-radius: 20px 0px 0px 20px;
+    padding: 0 0%;
+}
+
+.subcontainer-2{
+    width: 40%;
+    background-color: #D9D9D9;
+    margin: 0%;
+    border-radius: 0 20px 20px 0;
+    row-gap: 8%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0%;
+    row-gap: 1%;
+    height: 50%;
+}
+
+.form-input{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    
+    padding: 0%;
+}
+
+.form-heading{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+.heading-input {
+    font-family: 'Mulish';
+    font-weight: normal;
+    font-style: normal;
+    margin: 0;
+    padding: 0%;
+}
+
+input{
+    background-color: #ffffff;
+    border: solid;
+    border-color: #69C7C9;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 8px;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 90%;
+    outline: none;
+}
+
+input:focus{
+    border-width: 3px;
+    outline: none;
+    border-color: #8AE0DB;
+}
+
+button:hover{
+    background-color: #499fa1;
+}
+
+button{
+    background-color: #69C7C9;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 30px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    /* text-transform: uppercase; */
+    
+    cursor: pointer;
+}
+
+.subheading-text{
+    font-weight: bolder;
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+    width: 50%;
+}
+
+.text{
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    line-height: 30px;
+    word-wrap: break-word; /* Propiedad antigua, pero ampliamente compatible */
+    overflow-wrap: break-word; /* Propiedad moderna */
+    margin: 10% 0;
+    width: 65%;
+}
+
+textarea{
+    background-color: #ffffff;
+    border: solid;
+    border-color: #69C7C9;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 8px;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 90%;
+    height: 60%;
+    outline: none;
+    resize: none;
+}
+
+textarea:focus{
+    border-width: 3px;
+    outline: none;
+    border-color: #8AE0DB;
+}

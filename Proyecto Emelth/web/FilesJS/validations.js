@@ -5,17 +5,19 @@
  
  let addButton = document.getElementById("add_ambulanceButton");
  let searchButton=document.getElementById("searchButton");
- let expressionPlates=/^AM\d{4}$/;
+ const expressionPlates=/^AM\d{4}$/;
+ const expressionOnlyLetters=/^[a-zA-Z\s]+$/;
  let ambulanceFilter = document.getElementById("ambulanceFilter");
  let filterSelect= document.getElementById("selectFilter");
  let ambulancePlates= document.getElementById("ambulancePlate");
  let instititution= document.getElementById("selectInstitution");
  let Type= document.getElementById("selectType");
  
+ 
 
 searchButton.onclick= function(){
-    option = filterSelect.value;
-    validatePlates(ambulanceFilter.value, option);
+    search();
+    
 };
 addButton.onclick= function(){
      validate();
@@ -53,6 +55,16 @@ function validatePlates(value, option){
                  
                 ;
              break;
+            case "Nombre de institución":
+                if(expressionOnlyLetters.test(value)){
+                    return true;
+                    
+                }else {
+                    alert("No se permiten numeros");
+                    return false;
+                }
+
+            break;
                  
          }
      }else{
@@ -79,9 +91,7 @@ function validatePlates(value, option){
  }
  function addAmbulance(plateNumber, institution,service) {
     // Obtén los valores del formulario que deseas enviar al servlet
-   console.log(plateNumber);
-   console.log(institution);
-   console.log(service);
+   
     // Otros campos según tu formulario
 
     // Construye los datos que se enviarán al servlet
@@ -98,7 +108,25 @@ fetch(url, {
 .catch(error => {
     console.error('Error en la solicitud:', error);
 });
-
+location.reload(true);
 }
-
- 
+ function search(){
+     option = filterSelect.value;
+     data=ambulanceFilter.value;
+    
+    if(validatePlates(data, option)){
+         var elementos = document.getElementsByClassName("hola");
+          var resultadosFiltrados = document.getElementById("history_container");
+           
+             for (var i = 0; i < elementos.length; i++) {
+                var elemento = elementos[i];
+                var texto = elemento.innerText.toUpperCase(); // Obtener el texto del elemento en mayúsculas
+                console.log(texto);
+                // Mostrar solo los elementos que contengan la placa filtrada
+                if (texto.includes(data.toUpperCase())) {
+                     resultadosFiltrados.innerHTML = '';
+                    resultadosFiltrados.appendChild(elemento.cloneNode(true)); // Clonar el elemento y agregarlo al contenedor
+                }
+            }
+    }
+ }

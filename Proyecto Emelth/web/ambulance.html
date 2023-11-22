@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="FilesCSS/navs.css">
+     <link rel="stylesheet" type="text/css" href="FilesCSS/requests.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Mulish:wght@200&display=swap" rel="stylesheet">
@@ -38,7 +39,10 @@
                                    <a href="./Calls.html">Gestion de llamadas</a>
                                </li>
                                <li class="nav-li">
-                                   Gestión de Ambulancias
+                                   <a href="./ambulance.html">Gestion de ambulancias</a>
+                               </li>
+                                <li class="nav-li">
+                                   <a href="./registroAdmin.html">Gestion de usuarios</a>
                                </li>
                            </ul>
                        </div>
@@ -51,7 +55,7 @@
                        </div>
                    </li>
                    <li>
-                       <div class="nav-label">Contacto</div>
+                       <div class="nav-label"><a href="./contactUS.html">Contacto</a></div>
                    </li>
                  
                    
@@ -71,19 +75,26 @@
             <button  class="gray_button" id="add_ambulance">
                 Agregar +
             </button>
-            <button class="gray_button" id="history_button">Historial</button>
+            <button class="gray_button" id="history_button">Recargar Historial</button>
         </div>
         <div class="form_container">
             <div class ="form">
              <label>Encuentre la ambulancia que busca</label>
             <input type="text"  id="ambulanceFilter" placeholder="Buscar"> 
-            <label> O seleccione un filtro</label>
+            <label> seleccione un filtro</label>
             <select class="selects" id="selectFilter">
                 <option value="Placa">Placa</option>
-                <option value="Institución">Institucion</option>
+                <option value="Nombre de institución">Institucion</option>
                 
             </select>
             <button id="searchButton" class="blue_buttons" >Buscar</button>
+            </div>
+            
+            
+        </div>
+        <div class="form_container">
+            <div class ="form" id="history_container">
+                
             </div>
             
             
@@ -131,6 +142,7 @@
     
     
     <script  type="text/javascript" src="FilesJS/validations.js"></script>
+     <script  type="text/javascript" src="FilesJS/history.js"></script>
      <script  type="text/javascript" src="OnOpen.js"></script>
 </body>
 

@@ -11,12 +11,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
 /**
  *
@@ -24,32 +29,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Ambulances", urlPatterns = {"/Ambulances"})
 public class Ambulances extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+  
+    private List<JSONObject> Ambulances;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Ambulances</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Ambulances at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+            throws ServletException, IOException  {}
 
    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -113,10 +97,33 @@ public class Ambulances extends HttpServlet {
                             } else {
                                 response.getWriter().write("Error en la inserción");
                             };
-                            break;
+                            
                         }else{
                             response.getWriter().write("Registro repetido");
                         }
+                    break; 
+                    case "history":
+            {
+                try {
+                    response.setContentType("application/json");
+                    response.setCharacterEncoding("UTF-8");
+
+            // Obtener el flujo de salida de la respuesta
+                    PrintWriter out = response.getWriter();
+                    Ambulances= new ArrayList<>();
+                    
+                    getHistory();
+                    out.print(Ambulances);
+                    out.flush();
+                    
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Ambulances.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Ambulances.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+                    
                 }  
         
        
@@ -165,9 +172,7 @@ public class Ambulances extends HttpServlet {
                     declaracion.setString(1, plateNumber);
                     declaracion.setInt(2, institution);
                      declaracion.setInt(3, 1);
-
                     declaracion.setInt(4, service);
-
                     // Ejecuta la inserción
                     int filasAfectadas = declaracion.executeUpdate();
 
@@ -211,6 +216,51 @@ public class Ambulances extends HttpServlet {
             } catch (ClassNotFoundException | SQLException e) {
                    return false; // Indica fallo
             }
+    
+
+    }
+    private void getHistory() throws ClassNotFoundException, SQLException {
+           
+         // Configura la conexión a la base de datos
+                String jdbcUrl = "jdbc:mysql://localhost:3306/bd_vv";
+                String usuarioDB = "root";
+                String claveDB = "Heatens123-";
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(jdbcUrl, usuarioDB, claveDB);
+            String sql = "SELECT * FROM VistaAmbulanciasConDatos";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                // Ejecutar la consulta
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    
+                    // Procesar los resultados
+                    while (resultSet.next()) {
+                    ;
+                         
+                        int amId = resultSet.getInt("am_id");
+                        String amPlacas = resultSet.getString("am_placas");
+                        String nombreInstitucion = resultSet.getString("Institucion");
+                        String estadoDisponibilidad = resultSet.getString("Disponibilidad");
+                        String descripcionServicio = resultSet.getString("Servicio");
+                         JSONObject jsonRowAmbulance = new JSONObject();
+                          jsonRowAmbulance.put("id",amId);
+                         jsonRowAmbulance.put("Placas",amPlacas);
+                         
+                          jsonRowAmbulance.put("Institución",nombreInstitucion);
+                          jsonRowAmbulance.put("Estado",estadoDisponibilidad);
+                          jsonRowAmbulance.put("Servicio",descripcionServicio);
+                          Ambulances.add(jsonRowAmbulance);
+                       
+                        
+                    }
+                 
+                    
+                }
+            }
+         catch (SQLException e) {
+            e.printStackTrace();
+        }
     
 
     }
