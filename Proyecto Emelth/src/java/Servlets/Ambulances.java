@@ -175,11 +175,13 @@ public class Ambulances extends HttpServlet {
                     declaracion.setInt(4, service);
                     // Ejecuta la inserción
                     int filasAfectadas = declaracion.executeUpdate();
-
+                     conexion.close();
                     // Verifica si la inserción fue exitosa
                     return filasAfectadas > 0;
+                   
                 }
             } catch (ClassNotFoundException | SQLException e) {
+                 
                    return false; // Indica fallo
             }
     }
