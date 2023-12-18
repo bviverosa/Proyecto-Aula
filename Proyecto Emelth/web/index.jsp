@@ -1,3 +1,43 @@
+<%-- 
+    Document   : index
+    Created on : 26 nov 2023, 11:51:07
+    Author     : bryda
+--%>
+<%
+        HttpSession sesion = request.getSession();
+        if (sesion != null) {
+            Integer userId = (Integer) sesion.getAttribute("userId");
+            if (userId != null) {
+                switch(userId){
+                case 0:
+                     response.sendRedirect("index.jsp");
+                break;
+                case 1:
+                     response.sendRedirect("home.jsp");
+                break;
+                case 2:
+                     response.sendRedirect("HomeAdmin.jsp");
+                break;
+                case 3:
+                response.sendRedirect("HomeOper.jsp");
+                
+                
+                default:;
+                
+                
+               
+                  }
+                
+            } else {
+                // El usuario no está autenticado, redirecciona o realiza alguna acción adecuada
+               
+            }
+        } else {
+            // Sesión no disponible, redirecciona o realiza alguna acción adecuada
+            response.sendRedirect("index.jsp");
+        }
+    %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,18 +58,18 @@
                 <span></span>
                 <div class="form-input">
                     <div class="form-heading"><p class="heading-input">Nombre</p></div>
-                    <input type="text" placeholder="Escriba su nombre completo">
+                    <input type="text" placeholder="Escriba su nombre completo" id="name-register-input">
                 </div>
                 <div class="form-input">
                     <div class="form-heading"><p class="heading-input">Correo</p></div>
-                    <input type="email" placeholder="Escriba su correo electronico">
+                    <input type="email" placeholder="Escriba su correo electronico" id="email-register-input">
                 </div>
                 <div class="form-input">
                     <div class="form-heading"><p class="heading-input">Contraseña</p></div>
-                    <input type="password" placeholder="Ingrese una contraseña">
+                    <input type="password" placeholder="Ingrese una contraseña"id="password-register-input">
                     <p id="min-text">Al registrarte aceptas nuestros <a href="#">Terminos de servicio</a> y nuestro <a href="#">Aviso de privacidad</a></p>
                 </div>
-                <button>Registrarse</button>
+                <button id="register-button">Registrarse</button>
             </form>
         </div>
         <div class="form-container sign-in">

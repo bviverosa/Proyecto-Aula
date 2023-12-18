@@ -1,3 +1,40 @@
+<%-- 
+    Document   : form
+    Created on : 26 nov 2023, 13:46:13
+    Author     : bryda
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+        HttpSession sesion = request.getSession();
+        if (sesion != null) {
+            Integer userId = (Integer) sesion.getAttribute("userId");
+            if (userId != null) {
+                switch(userId){
+                case 0:
+                     response.sendRedirect("index.jsp");
+                break;
+                case 1:
+                     response.sendRedirect("home.jsp");
+                break;
+                case 2:
+                     response.sendRedirect("HomeAdmin.jsp");
+                break;
+                default:;
+                
+                
+               
+                  }
+                
+            } else {
+                // El usuario no está autenticado, redirecciona o realiza alguna acción adecuada
+                response.sendRedirect("index.jsp");
+            }
+        } else {
+            // Sesión no disponible, redirecciona o realiza alguna acción adecuada
+            response.sendRedirect("index.jsp");
+        }
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,11 +58,11 @@
             
        <nav>
            <div class="nav-left">
-               <ul>
+              <ul>
                    
                    <li>
                       <div class="nav-label">
-                          <a href="Home.html">Inicio</a>
+                          <a href="./form.html">Inicio</a>
                        </div>
                    </li>
                    <li>
@@ -35,17 +72,16 @@
                        <div class="menu-container">
                            <ul class="nav-ul">
                                <li class="nav-li">
-                                   Gestion de llamadas
+                                   <a href="./form.jsp">Registrar llamada</a>
                                </li>
-                               <li class="nav-li">
-                                   Gestión de Ambulancias
-                               </li>
+                              
                            </ul>
                        </div>
                    
                    </li>
                        
-                   <li><div class="nav-label">
+                   <li>
+                       <div class="nav-label">
                        Ayuda
                        </div>
                    </li>

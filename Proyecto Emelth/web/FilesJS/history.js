@@ -1,4 +1,4 @@
-
+ 
 function obtenerDatos() {
     let url = `/Proyecto_Emelth/Ambulances?action=history`;
 
@@ -15,6 +15,9 @@ function obtenerDatos() {
     .catch(error => {
         console.error('Error en la solicitud:', error);
         return Promise.reject(error);
+        
+        
+        
     });
 }
 
@@ -43,3 +46,4 @@ buttonReload.onclick=function(){
     .catch(error => console.error('Error al obtener datos del servidor:', error));
     
 }
+

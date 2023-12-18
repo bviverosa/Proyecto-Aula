@@ -5,6 +5,36 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+        HttpSession sesion = request.getSession();
+        if (sesion != null) {
+            Integer userId = (Integer) sesion.getAttribute("userId");
+            if (userId != null) {
+                switch(userId){
+                case 0:
+                     response.sendRedirect("index.jsp");
+                break;
+                case 1:
+                     response.sendRedirect("home.jsp");
+                break;
+                case 3:
+                    response.sendRedirect("HomeOper");
+                break;
+                default:;
+                
+                
+               
+                  }
+                
+            } else {
+                // El usuario no está autenticado, redirecciona o realiza alguna acción adecuada
+                response.sendRedirect("index.jsp");
+            }
+        } else {
+            // Sesión no disponible, redirecciona o realiza alguna acción adecuada
+            response.sendRedirect("index.jsp");
+        }
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,18 +78,18 @@
                     </div>
                     <div class="form-input">
                         <div class="form-heading"><p class="heading-input">Correo</p></div>
-                        <input type="email" placeholder="Escriba su correo electronico">
+                        <input type="email" placeholder="Escriba su correo electronico" id="emailOper">
                     </div>
                     <div class="form-input">
                         <div class="form-heading"><p class="heading-input">Contraseña</p></div>
-                        <input type="password" placeholder="Ingrese una contraseña">
+                        <input type="password" placeholder="Ingrese una contraseña" id="passwordOper">
                     </div>
                     <button id="addButton">Registrar</button>
                 </form>
             </div>
 
-            <div class="container_tabla">
-                <table>
+            <div class="container_tabla" >
+                <table >
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -67,61 +97,9 @@
                             <th>Apellido paterno</th>
                             <th>Apellido materno</th>
                             <th>Correo</th>
-                            <th>Contraseña provisional</th>
+                            
                         </tr>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Max</td>
-                                <td>Sánchez</td>
-                                <td>Rivero</td>
-                                <td>correo@gmail.com</td>
-                                <td>1234567890</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Max</td>
-                                <td>Sánchez</td>
-                                <td>Rivero</td>
-                                <td>correo@gmail.com</td>
-                                <td>1234567890</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Max</td>
-                                <td>Sánchez</td>
-                                <td>Rivero</td>
-                                <td>correo@gmail.com</td>
-                                <td>1234567890</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Max</td>
-                                <td>Sánchez</td>
-                                <td>Rivero</td>
-                                <td>correo@gmail.com</td>
-                                <td>1234567890</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Max</td>
-                                <td>Sánchez</td>
-                                <td>Rivero</td>
-                                <td>correo@gmail.com</td>
-                                <td>1234567890</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Max</td>
-                                <td>Sánchez</td>
-                                <td>Rivero</td>
-                                <td>correo@gmail.com</td>
-                                <td>1234567890</td>
-                            </tr>
-                            
-                            
-                            
-                           
+                        <tbody id="userContainer">   
                         </tbody>
                     </head>    
                 </table>

@@ -1,3 +1,40 @@
+<%-- 
+    Document   : HomeAdmin
+    Created on : 24 nov 2023, 8:15:32
+    Author     : bryda
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+        HttpSession sesion = request.getSession();
+        if (sesion != null) {
+            Integer userId = (Integer) sesion.getAttribute("userId");
+            if (userId != null) {
+                switch(userId){
+                case 0:
+                     response.sendRedirect("index.jsp");
+                break;
+                case 1:
+                     response.sendRedirect("home.jsp");
+                break;
+                case 3:
+                    response.sendRedirect("HomeOper");
+                break;
+                default:;
+                
+                
+               
+                  }
+                
+            } else {
+                // El usuario no está autenticado, redirecciona o realiza alguna acción adecuada
+                response.sendRedirect("index.jsp");
+            }
+        } else {
+            // Sesión no disponible, redirecciona o realiza alguna acción adecuada
+            response.sendRedirect("index.jsp");
+        }
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,11 +73,15 @@
                        <div class="menu-container">
                            <ul class="nav-ul">
                                <li class="nav-li">
-                                   <a href="./Calls.html">Gestion de llamadas</a>
+                                   <a href="./addUsers.jsp">Gestion de Operadores</a>
+                               </li>
+                                <li class="nav-li">
+                                   <a href="./Calls.jsp">Gestion de llamadas</a>
                                </li>
                                <li class="nav-li">
                                    <a href="./ambulance.jsp">Gestion de ambulancias</a>
                                </li>
+                              
                            </ul>
                        </div>
                    

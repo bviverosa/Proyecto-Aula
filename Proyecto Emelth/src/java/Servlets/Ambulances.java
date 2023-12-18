@@ -5,7 +5,7 @@
 package Servlets;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+
 import java.sql.PreparedStatement;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
+import metods.conection;
+
 
 /**
  *
@@ -29,7 +31,7 @@ import org.json.JSONObject;
  */
 @WebServlet(name = "Ambulances", urlPatterns = {"/Ambulances"})
 public class Ambulances extends HttpServlet {
-  
+  conection con= new conection();
     private List<JSONObject> Ambulances;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -52,58 +54,72 @@ public class Ambulances extends HttpServlet {
                 switch(action){
                     case "add":
                         String plateNumber = request.getParameter("plateNumber");
-                        if(!CompareValue(plateNumber)){
-                            String institution = request.getParameter("institution");
-                            String service = request.getParameter("service");
-                            int institutionOption=0,serviceOption=0;
-                            switch(institution){
-                                case "10":
-                                    institutionOption=1;
-
-                                    break;
-                                case "11":
-                                    institutionOption=2;
-                                    break;
-                                case "12":
-                                     institutionOption=3;
-                                    break;
-                                 case"13":
-                                     institutionOption=4;
-                                    break;
-                            };
-                            switch(service){
-                                case "90":
-                                    serviceOption=1;
-
-                                    break;
-                                case "91":
-                                    serviceOption=2;
-                                    break;
-                                case "92":
-                                     serviceOption=3;
-                                    break;
-                                 case"93":
-                                     serviceOption=4;
-                                    break;
-                            };
-
-
-            // Otros parámetros según tu formulario
-
-            // Luego, realiza la inserción en la base de datos
-                            boolean success = insertIntoDatabase(plateNumber, institutionOption, serviceOption);
-                             if (success) {
+            {
+                try {
+                    if(!CompareValue(plateNumber)){
+                        String institution = request.getParameter("institution");
+                        String service = request.getParameter("service");
+                        int institutionOption=0,serviceOption=0;
+                        switch(institution){
+                            case "10":
+                                institutionOption=1;
+                                
+                                break;
+                            case "11":
+                                institutionOption=2;
+                                break;
+                            case "12":
+                                institutionOption=3;
+                                break;
+                            case"13":
+                                institutionOption=4;
+                                break;
+                        }
+                        switch(service){
+                            case "90":
+                                serviceOption=1;
+                                
+                                break;
+                            case "91":
+                                serviceOption=2;
+                                break;
+                            case "92":
+                                serviceOption=3;
+                                break;
+                            case"93":
+                                serviceOption=4;
+                                break;
+                        }
+                        
+                        
+                        // Otros parámetros según tu formulario
+                        
+                        // Luego, realiza la inserción en la base de datos
+                        
+                        boolean success;
+                        try {
+                            success = insertIntoDatabase(plateNumber, institutionOption, serviceOption);
+                            if (success) {
                                 response.getWriter().write("Inserción exitosa");
                             } else {
                                 response.getWriter().write("Error en la inserción");
                             };
-                            
-                        }else{
-                            response.getWriter().write("Registro repetido");
+                        } catch (Exception ex) {
+                            Logger.getLogger(Ambulances.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                        
+                        
+                    }else{
+                        response.getWriter().write("Registro repetido");
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(Ambulances.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                     break; 
+ 
                     case "history":
-            {
+            
                 try {
                     response.setContentType("application/json");
                     response.setCharacterEncoding("UTF-8");
@@ -120,9 +136,11 @@ public class Ambulances extends HttpServlet {
                     Logger.getLogger(Ambulances.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
                     Logger.getLogger(Ambulances.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                } catch (Exception ex) {
+                Logger.getLogger(Ambulances.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
+            break;
                     
                 }  
         
@@ -156,26 +174,21 @@ public class Ambulances extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private boolean insertIntoDatabase(String plateNumber, int institution,int  service) {
+    private boolean insertIntoDatabase(String plateNumber, int institution,int  service) throws Exception{
            try {
-                // Configura la conexión a la base de datos
-                String jdbcUrl = "jdbc:mysql://localhost:3306/bd_vv";
-                String usuarioDB = "root";
-                String claveDB = "Heatens123-";
-
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection conexion = DriverManager.getConnection(jdbcUrl, usuarioDB, claveDB);
+                Connection conect=con.Conection();
+                
 
                 // Prepara la declaración SQL para la inserción
                 String sql = "INSERT INTO ambulancias (am_placas, Institucion_ins_id,Disponibilidad_dis_id, Servicio_se_id) VALUES (?, ?, ?,?)";
-                try (PreparedStatement declaracion = conexion.prepareStatement(sql)) {
+                try (PreparedStatement declaracion = conect.prepareStatement(sql)) {
                     declaracion.setString(1, plateNumber);
                     declaracion.setInt(2, institution);
                      declaracion.setInt(3, 1);
                     declaracion.setInt(4, service);
                     // Ejecuta la inserción
                     int filasAfectadas = declaracion.executeUpdate();
-                     conexion.close();
+                     conect.close();
                     // Verifica si la inserción fue exitosa
                     return filasAfectadas > 0;
                    
@@ -187,19 +200,15 @@ public class Ambulances extends HttpServlet {
     }
     
     
-    private boolean CompareValue(String plateNumber) {
+    private boolean CompareValue(String plateNumber) throws Exception {
            try {
                 // Configura la conexión a la base de datos
-                String jdbcUrl = "jdbc:mysql://localhost:3306/bd_vv";
-                String usuarioDB = "root";
-                String claveDB = "Heatens123-";
-
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection conexion = DriverManager.getConnection(jdbcUrl, usuarioDB, claveDB);
+                 Connection conect=con.Conection();
+                
 
                 // Prepara la declaración SQL para la inserción
                  String sql = "SELECT * FROM ambulancias WHERE am_placas = ?";
-                try (PreparedStatement consult = conexion.prepareStatement(sql)) {
+                try (PreparedStatement consult = conect.prepareStatement(sql)) {
                     consult.setString(1, plateNumber);
                     try (ResultSet resultado = consult.executeQuery()) {
                     if (resultado.next()) {
@@ -221,25 +230,21 @@ public class Ambulances extends HttpServlet {
     
 
     }
-    private void getHistory() throws ClassNotFoundException, SQLException {
+    private void getHistory() throws Exception {
            
          // Configura la conexión a la base de datos
-                String jdbcUrl = "jdbc:mysql://localhost:3306/bd_vv";
-                String usuarioDB = "root";
-                String claveDB = "Heatens123-";
-
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection connection = DriverManager.getConnection(jdbcUrl, usuarioDB, claveDB);
+               Connection conect=con.Conection();
+                
             String sql = "SELECT * FROM VistaAmbulanciasConDatos";
 
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            try (PreparedStatement preparedStatement = conect.prepareStatement(sql)) {
                 // Ejecutar la consulta
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     
                     // Procesar los resultados
                     while (resultSet.next()) {
-                    ;
-                         
+                    
+                      
                         int amId = resultSet.getInt("am_id");
                         String amPlacas = resultSet.getString("am_placas");
                         String nombreInstitucion = resultSet.getString("Institucion");

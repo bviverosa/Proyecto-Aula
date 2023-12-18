@@ -1,4 +1,43 @@
+<%-- 
+    Document   : Calls
+    Created on : 26 nov 2023, 13:44:46
+    Author     : bryda
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+        HttpSession sesion = request.getSession();
+        if (sesion != null) {
+            Integer userId = (Integer) sesion.getAttribute("userId");
+            if (userId != null) {
+                switch(userId){
+                case 0:
+                     response.sendRedirect("index.jsp");
+                break;
+                case 1:
+                     response.sendRedirect("home.jsp");
+                break;
+                case 3:
+                    response.sendRedirect("HomeOper");
+                break;
+                default:;
+                
+                
+               
+                  }
+                
+            } else {
+                // El usuario no está autenticado, redirecciona o realiza alguna acción adecuada
+                response.sendRedirect("index.jsp");
+            }
+        } else {
+            // Sesión no disponible, redirecciona o realiza alguna acción adecuada
+            response.sendRedirect("index.jsp");
+        }
+    %>
 <!DOCTYPE html>
+
+
 <html>
 <head>
     <title>TODO supply a title</title>

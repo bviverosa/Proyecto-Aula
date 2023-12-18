@@ -5,6 +5,36 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+  <%
+        HttpSession sesion = request.getSession();
+        if (sesion != null) {
+            Integer userId = (Integer) sesion.getAttribute("userId");
+            if (userId != null) {
+                switch(userId){
+                case 0:
+                     response.sendRedirect("index.jsp");
+                break;
+                case 1:
+                     response.sendRedirect("home.jsp");
+                break;
+                case 2:
+                     response.sendRedirect("HomeAdmin.jsp");
+                break;
+                default:;
+                
+                
+               
+                  }
+                
+            } else {
+                // El usuario no está autenticado, redirecciona o realiza alguna acción adecuada
+                response.sendRedirect("index.jsp");
+            }
+        } else {
+            // Sesión no disponible, redirecciona o realiza alguna acción adecuada
+            response.sendRedirect("index.jsp");
+        }
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +63,7 @@
                    
                    <li>
                       <div class="nav-label">
-                          <a href="./form.html">Inicio</a>
+                          <a href="./HomeOper.jsp">Inicio</a>
                        </div>
                    </li>
                    <li>
@@ -43,11 +73,9 @@
                        <div class="menu-container">
                            <ul class="nav-ul">
                                <li class="nav-li">
-                                   <a href="./Calls.html">Gestion de llamadas</a>
+                                   <a href="./control.jsp">Control de llamadas</a>
                                </li>
-                               <li class="nav-li">
-                                   <a href="./ambulance.jsp">Gestion de ambulancias</a>
-                               </li>
+                              
                            </ul>
                        </div>
                    
